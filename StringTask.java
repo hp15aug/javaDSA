@@ -8,7 +8,6 @@ public class StringTask {
         String ans=f(str);
         System.out.println(ans);
     }
-
     private static String f(String str){
         int n=str.length();
         str=str.toLowerCase();
