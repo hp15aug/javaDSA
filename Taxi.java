@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Taxi {
@@ -13,16 +14,24 @@ public class Taxi {
         }
         System.out.println(f(arr));
     }
-    private static int f(int[] arr){
+    public static int f(int[] arr){
+        Arrays.sort(arr);
+        int i=0; int j=arr.length-1;
         int c=0;
-        for (int j : arr) {
-            c += j;
+        if(j==0) return 1; // Fixed: when there's only one group
+
+        while(i<=j){
+            int cap=4;
+            if(cap >= arr[j]){
+                cap-=arr[j];
+                j--;
+            }
+            while(i<=j && cap>=arr[i]){
+                cap-=arr[i];
+                i++;
+            }
+            c++;
         }
-//        System.out.println(c);
-        if(c%4 == 0){
-            return c/4;
-        }else{
-            return (c/4)+1;
-        }
+        return c;
     }
 }
