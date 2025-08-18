@@ -25,11 +25,3 @@ public class Dragons {
         System.out.println("YES");
     }
 }
-
-class Pair{
-    int f; int s;
-    Pair(int f, int s){
-        this.f=f;
-        this.s=s;
-    }
-}
