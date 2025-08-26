@@ -2,8 +2,8 @@ import java.util.*;
 
 class Test{
     public static void main(String[] args) {
-        int[]arr={5,5,10,10,20};
-        System.out.println(lemonadeChange(arr));
+        int n=3;
+        System.out.println(getMin(n));
     }
     public static boolean lemonadeChange(int[] arr) {
         int five=0;
@@ -29,5 +29,26 @@ class Test{
             }
         }
         return true;
+    }
+
+    public static int getMin(int n) {
+        // code here
+        int c=0; int x=n;
+        c+=n/10;
+
+        x = x % 10;
+
+        if(x>=5){
+            c+=1;
+        }
+        x-=5;
+
+        if(x == 1 || x==2){
+            c+=1;
+        }else if( x == 3 || x==4){
+            c+=2;
+        }
+
+        return c;
     }
 }
