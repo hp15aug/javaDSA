@@ -88,7 +88,6 @@ class Test {
         }
         return min;
     }
-
     private static int triangularSum(int [] arr){
         int n=arr.length;
         int x=f(arr, n );
@@ -104,8 +103,65 @@ class Test {
         System.out.println(Arrays.toString(arr));
         return f(arr, n-1);
     }
+
+    public static String addBinary(String a, String b) { // 100  11
+
+        int l=a.length()-1;  // 2
+        int r=b.length()-1;  // 1
+
+        if(r > l )
+            return addBinary(b, a);
+
+        StringBuilder sb=new StringBuilder();
+        int s=0;
+        int c=0;
+        while(r>=0 && l>=0){
+            char aa=a.charAt(l);
+            char bb=b.charAt(r);
+
+            if(aa == '0' && bb == '0') {
+                sb.append(c);
+                c=0;
+            }
+
+            else if(((aa == '0' && bb == '1') || (aa == '1' && bb == '0')) && c==0) {
+                sb.append('1');
+            }
+
+            else if(((aa == '0' && bb == '1') || (aa == '1' && bb == '0'))){
+                sb.append('0');
+            }
+            else if( aa == '1' && bb == '1' && c==0){
+                sb.append('0');
+                c=1;
+            }
+            else if( aa == '1' && bb == '1'){
+                sb.append('1');
+            }
+            r--;
+            l--;
+        }
+        while(l>=0){
+            char aa=a.charAt(l);
+            if(c==1 && aa=='1') {
+                sb.append(0);
+            }else if(c == 1 && aa == '0'){
+                sb.append(1);
+                c=0;
+            }
+            else if(c==0){
+                sb.append(aa);
+            }
+            l--;
+        }
+        if(c == 1)
+            sb.append(c);
+
+        return sb.reverse().toString();
+    }
+
     public static void main(String[] args) {
-        int[] arr={5, 4, 3, 2, 1};
-        System.out.println(triangularSum(arr));
+        String a = "1010", b = "1011";
+        System.out.println(addBinary(a, b));
     }
 }
