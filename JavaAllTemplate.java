@@ -8,7 +8,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class  {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static PrintWriter out = new PrintWriter(System.out);
@@ -27,7 +27,6 @@ public class Main {
     static void solve() throws Exception {
         // Your solution here
         int n = nextInt();
-        out.println(n);
     }
 
     // Fast I/O methods
