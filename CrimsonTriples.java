@@ -20,6 +20,13 @@ public static void main(String[] args) throws Exception {
 static void solve() throws Exception {
     // Your solution here
     int n = nextInt();
+
+    long ans=1;
+    for (int i = 1; i < n; i++) {
+        long multiple=n/i;
+        ans+=multiple*multiple;
+    }
+    out.println(ans);
 }
 
 // Fast I/O methods
