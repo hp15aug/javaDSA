@@ -21,6 +21,7 @@ public class  {
             solve();
         }
 
+        out.flush();
         out.close();
     }
 
