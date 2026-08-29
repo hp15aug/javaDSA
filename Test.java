@@ -103,7 +103,6 @@ class Test {
         System.out.println(Arrays.toString(arr));
         return f(arr, n-1);
     }
-
     public static String addBinary(String a, String b) { // 100  11
 
         int l=a.length()-1;  // 2
@@ -159,9 +158,62 @@ class Test {
 
         return sb.reverse().toString();
     }
+    public static int removeElement(int[] arr, int val) {
+        int l=0;
+        int r=arr.length-1;
+
+        while(l<r){
+            while(arr[r]==val){
+                r--;
+            }
+            while(arr[l] != val){
+                l++;
+            }
+            if(arr[l] == val)
+                swap(arr, l, r);
+            l++;
+            r--;
+        }
+
+        for(int i=0; i<arr.length; i++){
+            if(arr[i]==val)
+                return i+1;
+        }
+        return arr.length;
+    }
+    private static void swap(int[] arr, int l, int r){
+        int temp=arr[l];
+        arr[l]=arr[r];
+        arr[r]=temp;
+    }
+    public static boolean checkRedundancy(String s) {
+        // code here
+        Stack<Character> st=new Stack<>();
+
+        for(int i=0; i<s.length(); i++){
+            char ch=s.charAt(i);
+            if(Character.isAlphabetic(ch))
+                continue;
+
+            if(!st.isEmpty() && st.peek() == '(' && ch == ')')
+                return true;
+
+            if(ch == ')'){
+                while(!st.isEmpty()){
+                    int x= st.pop();
+                    if( x == '(')
+                        continue;
+                }
+            }
+
+            st.push(ch);
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
-        String a = "1010", b = "1011";
-        System.out.println(addBinary(a, b));
+        String s="((a+b))";
+        System.out.println(checkRedundancy(s));
     }
 }
