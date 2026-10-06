@@ -11,4 +11,4 @@ I'm using this as a way to improve my problem-solving skills and get better at c
 - Improve speed and accuracy in contests
 - Track progress over time
 
-📌 _Currently solving problems regularly and learning new techniques along the way!_
+ _Currently solving problems regularly and learning new techniques along the way!_
