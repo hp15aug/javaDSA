@@ -1,64 +1,51 @@
-import java.util.concurrent.*;
-
-class MyThread extends Thread {
-    @Override
-    public void run(){
-        for (int i = 0; i < 5; i++) {
-            System.out.println("ID: "+Thread.currentThread().getId() + " "+i);
-            try {
-                Thread.sleep(500);
-            }catch (InterruptedException e){
-                System.out.println(e);
-            }
-        }
-    }
-}
-
-class MyCallable implements Callable<String>{
-
-    private final String name;
-    MyCallable(String name){
-        this.name=name;
-    }
-    @Override
-    public String call() throws Exception {
-        String s="";
-        for (int i = 0; i < 5; i++) {
-            s="Callable "+name+" is running: "+i;
-            System.out.println(s);
-            Thread.sleep(500);
-        }
-        return s;
-    }
-}
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class ThreadLearn{
+
     public static void main(String[] args) {
-//        MyThread thread1 = new MyThread();
-//        MyThread thread2 = new MyThread();
-//        MyThread thread3 = new MyThread();
-//        MyThread thread4 = new MyThread();
-//
-//        thread1.start();
-//        thread2.start();
-//        thread3.start();
-//        thread4.start();
+        // Thread t = new Thread(() -> {
+        //     System.out.println(Thread.currentThread().getName());
+        // });
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        // t.start();
 
-        Callable<String> callable1 = new MyCallable("task1");
-        Callable<String> callable2 = new MyCallable("task2");
+        // MyThread t = new MyThread();
+        // t.start();
 
-        try {
-            Future<String> f1=executor.submit(callable1);
-            Future<String> f2=executor.submit(callable2);
+        // try (ExecutorService ex = new Executors.newSingleThreadExecutor()){
+        // try (ExecutorService ex = Executors.newFixedThreadPool(2)) {
+        //     Future<Integer> future = ex.submit(() -> {
+        //         System.out.println(" Callable Thread: " + Thread.currentThread().getName());
+        //         return 100;
+        //     });
+        //     Future<Integer> future2 = ex.submit(() -> {
+        //         System.out.println(" Callable Thread: " + Thread.currentThread().getName());
+        //         return 500;
+        //     });
+        //     System.out.println(future.get()+": Result by "+Thread.currentThread().getName());
+        //     System.out.println(future2.get()+": Result by "+Thread.currentThread().getName());
+        // } catch (Exception e) {
+        //     // TODO: handle exception
+        // }
 
-            System.out.println("Task 1: " +f1.get());
-            System.out.println("Task 2: "+f2.get());
-        }catch (InterruptedException | ExecutionException e){
-            System.out.println(e);
-        }finally {
-            executor.shutdown();
-        }
+        // Thread vThread = Thread.ofVirtual().name("my-virtual-thread").start(() -> {
+        //     System.out.println("Vir: "+Thread.currentThread());
+        //     System.out.println("Vir: "+Thread.currentThread().getName());
+        // });
+        // try {
+        //     vThread.join();
+        // } catch (Exception e) {
+        //     // TODO: handle exception
+        // }
+    }
+}
+
+class MyThread extends Thread{
+    @Override 
+    public void run(){
+        System.out.println("My thread "+getName());
     }
 }

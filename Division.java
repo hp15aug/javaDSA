@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+
+public class Division {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static PrintWriter out = new PrintWriter(System.out);
+
+    public static void main(String[] args) throws Exception {
+        int t = 1;
+        t = nextInt(); // Uncomment for multiple test cases
+
+        while(t-- > 0) {
+            solve();
+        }
+
+        out.flush();
+        out.close();
+    }
+
+    static void solve() throws Exception {
+        // Your solution here
+        int n = nextInt();
+        if(n >= 1900){
+            out.println("Division 1");
+        }else if(n>= 1600 && n<=1899){
+            out.println("Division 2");
+        }else if(n>= 1400 && n<=1599){
+            out.println("Division 3");
+        }else{
+            out.println("Division 4");
+        }
+    }
+
+    // Fast I/O methods
+    static String next() throws Exception {
+        while(st == null || !st.hasMoreElements()) {
+            st = new StringTokenizer(br.readLine());
+        }
+        return st.nextToken();
+    }
+
+    static int nextInt() throws Exception {
+        return Integer.parseInt(next());
+    }
+
+    static long nextLong() throws Exception {
+        return Long.parseLong(next());
+    }
+
+    static double nextDouble() throws Exception {
+        return Double.parseDouble(next());
+    }
+
+    static String nextLine() throws Exception {
+        return br.readLine();
+    }
+}
